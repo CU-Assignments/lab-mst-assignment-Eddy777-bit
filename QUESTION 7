@@ -1,0 +1,33 @@
+// Define an interface
+interface Vehicle {
+    void start();
+    void stop();
+    void accelerate();
+}
+
+// Implement the interface in a class
+class Car implements Vehicle {
+
+    // Implementing interface methods
+    public void start() {
+        System.out.println("Car has started.");
+    }
+
+    public void stop() {
+        System.out.println("Car has stopped.");
+    }
+
+    public void accelerate() {
+        System.out.println("Car is accelerating.");
+    }
+}
+
+// Main class to test
+public class InterfaceDemo {
+    public static void main(String[] args) {
+        Vehicle myCar = new Car(); // Using abstraction
+        myCar.start();
+        myCar.accelerate();
+        myCar.stop();
+    }
+}
