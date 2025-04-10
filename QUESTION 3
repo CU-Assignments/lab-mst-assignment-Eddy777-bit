@@ -1,0 +1,64 @@
+public class EncodeThreeStrings {
+
+    // Function to split a string into 3 parts: FRONT, MIDDLE, END
+    public static String[] splitIntoParts(String s) {
+        int len = s.length();
+        int part = len / 3;
+        int rem = len % 3;
+
+        int frontLen = part;
+        int middleLen = part;
+        int endLen = part;
+
+        if (rem == 1) {
+            middleLen += 1;
+        } else if (rem == 2) {
+            frontLen += 1;
+            endLen += 1;
+        }
+
+        String front = s.substring(0, frontLen);
+        String middle = s.substring(frontLen, frontLen + middleLen);
+        String end = s.substring(frontLen + middleLen);
+
+        return new String[]{front, middle, end};
+    }
+
+    // Function to toggle case of a string
+    public static String toggleCase(String s) {
+        StringBuilder toggled = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                toggled.append(Character.toLowerCase(c));
+            } else {
+                toggled.append(Character.toUpperCase(c));
+            }
+        }
+        return toggled.toString();
+    }
+
+    public static void main(String[] args) {
+        // Input Strings
+        String input1 = "John";
+        String input2 = "Johny";
+        String input3 = "Janardhan";
+
+        // Step 1: Split each string into FRONT, MIDDLE, END
+        String[] parts1 = splitIntoParts(input1);
+        String[] parts2 = splitIntoParts(input2);
+        String[] parts3 = splitIntoParts(input3);
+
+        // Step 2: Form output strings using the rule
+        String output1 = parts1[0] + parts2[1] + parts3[2];
+        String output2 = parts1[1] + parts2[2] + parts3[0];
+        String output3 = parts1[2] + parts2[0] + parts3[1];
+
+        // Step 3: Toggle case of output3
+        output3 = toggleCase(output3);
+
+        // Final Outputs
+        System.out.println("Output1: " + output1);
+        System.out.println("Output2: " + output2);
+        System.out.println("Output3: " + output3);
+    }
+}
