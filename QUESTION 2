@@ -1,0 +1,45 @@
+// Base class
+class Person {
+    String name;
+    int age;
+
+    // Constructor
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Method to display person details
+    void displayInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+// Derived class
+class Student extends Person {
+    String university;
+
+    // Constructor
+    Student(String name, int age, String university) {
+        super(name, age); // Calling the constructor of the base class
+        this.university = university;
+    }
+
+    // Method to display student details
+    void displayStudentInfo() {
+        displayInfo(); // Calling base class method
+        System.out.println("University: " + university);
+    }
+}
+
+// Main class to test
+public class InheritanceDemo {
+    public static void main(String[] args) {
+        // Create a Student object
+        Student student = new Student("Amit", 21, "Chandigarh University");
+
+        // Display full details
+        student.displayStudentInfo();
+    }
+}
