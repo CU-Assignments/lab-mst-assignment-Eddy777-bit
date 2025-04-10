@@ -1,0 +1,69 @@
+public class CustomStringProcessor {
+
+    // Get the numeric value of an alphabet (a/A = 1, b/B = 2, ..., z/Z = 26)
+    private static int getAlphabetValue(char ch) {
+        ch = Character.toLowerCase(ch);
+        return ch - 'a' + 1;
+    }
+
+    // Convert numeric value to alphabet (1 -> 'a', 2 -> 'b', ..., 26 -> 'z')
+    private static char getCharFromValue(int value) {
+        return (char) ('a' + value - 1);
+    }
+
+    // Main processing method
+    public static String processString(String input) {
+        StringBuilder result = new StringBuilder();
+
+        input = input.toLowerCase(); // make everything lowercase
+        int len = input.length();
+
+        int i = 0;
+        while (i < len) {
+            char current = input.charAt(i);
+
+            // If it's a digit or space, add it directly
+            if (Character.isDigit(current) || current == ' ') {
+                result.append(current);
+                i++;
+                continue;
+            }
+
+            // If last character is alphabet, append and break
+            if (i == len - 1 || !Character.isLetter(input.charAt(i + 1))) {
+                result.append(current);
+                i++;
+                continue;
+            }
+
+            // Next character
+            char next = input.charAt(i + 1);
+
+            if (Character.isLetter(next)) {
+                int sum = getAlphabetValue(current) + getAlphabetValue(next);
+                result.append(current);
+
+                if (sum % 26 == 0) {
+                    result.append('0');
+                } else {
+                    result.append(getCharFromValue(sum % 26));
+                }
+
+                i++; // move to next character after pair
+            } else {
+                result.append(current);
+            }
+
+            i++;
+        }
+
+        return result.toString();
+    }
+
+    // Main method to test
+    public static void main(String[] args) {
+        String input = "ac 12a"; // Try changing input here
+        String output = processString(input);
+        System.out.println("Output: " + output);
+    }
+}
