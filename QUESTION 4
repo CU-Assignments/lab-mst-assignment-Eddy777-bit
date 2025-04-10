@@ -1,0 +1,36 @@
+public class MathOperations {
+
+    // Method to add two integers
+    int calculate(int a, int b) {
+        return a + b;
+    }
+
+    // Method to subtract two doubles
+    double calculate(double a, double b) {
+        return a - b;
+    }
+
+    // Method to multiply three integers
+    int calculate(int a, int b, int c) {
+        return a * b * c;
+    }
+
+    // Method to add an array of integers
+    int calculate(int[] numbers) {
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        MathOperations math = new MathOperations();
+
+        // Calling overloaded methods
+        System.out.println("Addition of 5 and 10: " + math.calculate(5, 10));
+        System.out.println("Subtraction of 10.5 and 3.2: " + math.calculate(10.5, 3.2));
+        System.out.println("Multiplication of 2, 3, and 4: " + math.calculate(2, 3, 4));
+        System.out.println("Sum of array {1, 2, 3, 4, 5}: " + math.calculate(new int[]{1, 2, 3, 4, 5}));
+    }
+}
